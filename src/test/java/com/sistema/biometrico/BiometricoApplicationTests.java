@@ -11,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sistema.biometrico.entidad.Empleado;
-<<<<<<< HEAD
 import com.sistema.biometrico.repositorio.IEmpleadoRepositorio;
 import com.sistema.biometrico.servicio.IEmpleadoServicio;
 import com.sistema.biometrico.servicioImpl.EmpleadoServicioImpl;
-=======
 import com.sistema.biometrico.entidad.Rol;
 import com.sistema.biometrico.entidad.Usuario;
 import com.sistema.biometrico.repositorio.IEmpleadoRepositorio;
@@ -23,8 +21,6 @@ import com.sistema.biometrico.servicio.IEmpleadoServicio;
 import com.sistema.biometrico.servicioImpl.EmpleadoServicioImpl;
 import com.sistema.biometrico.servicioImpl.RolServicioImpl;
 import com.sistema.biometrico.servicioImpl.UsuarioServicioImpl;
-
->>>>>>> jv
 
 
 
@@ -34,11 +30,8 @@ class BiometricoApplicationTests {
 	//@Autowired
 	//private EmpleadoServicioImpl servicio;
 	
-<<<<<<< HEAD
-=======
 	//@Autowired
 	//private UsuarioServicioImpl servicio;
->>>>>>> jv
 	@Test
 	void contextLoads() {
 	
@@ -48,7 +41,6 @@ class BiometricoApplicationTests {
 			//System.out.println(empleado.getId());
 		//}
 		
-<<<<<<< HEAD
 		
 		//emp.setCedula("1234567890");
 		//emp.setNombre("Vizzñay");
@@ -59,10 +51,7 @@ class BiometricoApplicationTests {
 		//emp.setEstado(false);
 		//servicio.eliminar(1, emp);
 		
-		
-	}
 	
-=======
 		//Empleado emp=new Empleado();
         //emp.setCedula("1234567890");
 		//emp.setNombre("Maria");
@@ -122,6 +111,6 @@ class BiometricoApplicationTests {
 		servicioUsuario.crear(u);
 	}
 	*/
->>>>>>> jv
+
 
 }

@@ -1,9 +1,21 @@
 package com.sistema.biometrico.entidad;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -21,7 +33,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Empleado {
-@Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="empleado_id")
 	private Integer id;
@@ -63,4 +75,7 @@ public class Empleado {
 	
 	@Column(name="estado", nullable = false)
 	private boolean estado;
+	
+	 @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	    private Usuario usuario;	
 }

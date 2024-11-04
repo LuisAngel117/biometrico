@@ -30,7 +30,6 @@ public class EmpleadoServicioImpl implements IEmpleadoServicio {
 		existencia.setDireccion(empleado.getDireccion());
 		existencia.setTelefono(empleado.getTelefono());
 		existencia.setCorreo(empleado.getCorreo());
-		existencia.setEstado(true);
 		return repositorio.save(existencia);
 	}
 
@@ -39,11 +38,10 @@ public class EmpleadoServicioImpl implements IEmpleadoServicio {
 		return repositorio.listarEmpleadosActivos();
 	}
 
-	@Override
-	public boolean eliminar(Integer id) {
+	public boolean eliminar(Integer id) {	
 		Empleado existencia = repositorio.findById(id).get();
 		existencia.setId(id);
-		existencia.setEstado(false);
+		existencia.setEstado(true);
 		repositorio.save(existencia);
 		return true;
 	}

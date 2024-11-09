@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.sistema.biometrico.entidad.Usuario;
 
-public interface IUsuarioServicio extends UserDetailsService{
+public interface IUsuarioServicio {
 	Usuario crear(Usuario usuario);
 	Usuario actualizar(Integer id, Usuario usuario);
 	boolean eliminar(Integer id);

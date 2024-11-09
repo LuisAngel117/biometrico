@@ -79,17 +79,17 @@ class BiometricoApplicationTests {
 	
 	@Autowired
 	private EmpleadoServicioImpl servicioEmpleado;
-	/*
+/*
 	@Test
 	void contextLoads2() {
 		
 		Empleado emp=new Empleado();
         emp.setCedula("1234567890");
-		emp.setNombre("Maria");
-		emp.setApellido("Benavidez");
-		emp.setDireccion("Guamani");
-		emp.setTelefono("4564344556");
-		emp.setCorreo("maria@gmaila.com");
+		emp.setNombre("Luis");
+		emp.setApellido("Sigsig");
+		emp.setDireccion("Cutuglagua");
+		emp.setTelefono("098765678");
+		emp.setCorreo("luis@gmail.com");
 		servicioEmpleado.crear(emp);
 		
 		Rol rol1=new Rol();
@@ -101,16 +101,13 @@ class BiometricoApplicationTests {
 		rol2.setEstado(false);
 		
 		Usuario u=new Usuario();
-		u.setUsuario("Pedro");
-		u.setPassword("123");
+		u.setUsername("Luis_Admin");
+		u.setPassword("secretPrueba");
 		u.setEmpleado(emp);
-		
 		
 		u.getRol().add(rol1);
 		u.getRol().add(rol2);
 		servicioUsuario.crear(u);
 	}
 	*/
-
-
 }

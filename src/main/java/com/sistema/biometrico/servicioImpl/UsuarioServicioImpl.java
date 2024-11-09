@@ -13,38 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sistema.biometrico.entidad.Usuario;
-import com.sistema.biometrico.repositorio.IUsuarioReposositorio;
+import com.sistema.biometrico.repositorio.IUsuarioRepositorio;
 import com.sistema.biometrico.servicio.IUsuarioServicio;
 
 @Service
 public class UsuarioServicioImpl implements IUsuarioServicio{
 	@Autowired
-	private IUsuarioReposositorio repositorio;
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = repositorio.findByUsername(username)
-	            .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
-	        
-	        return new org.springframework.security.core.userdetails.User(usuario.getUsuario(), usuario.getPassword(), getAuthorities(usuario));
-	   
-		/*
-		Usuario usuario = repositorio.findByUsername(username);
-	        if (usuario == null) {
-	            throw new UsernameNotFoundException("Usuario no encontrado");
-	        }
-	        return User.withUsername(usuario.getUsuario())
-	                .password(usuario.getPassword())
-	                .roles(usuario.getRol().stream().map(Rol::getNombre).toArray(String[]::new))
-	                .build();
-	    */
-	}
-	
-	private Collection<? extends GrantedAuthority> getAuthorities(Usuario usuario) {
-        return usuario.getRol().stream()
-            .map(rol -> new SimpleGrantedAuthority(rol.getNombre()))
-            .collect(Collectors.toList());
-    }
+	private IUsuarioRepositorio repositorio;
 
 	@Override
 	public Usuario crear(Usuario usuario) {
@@ -57,7 +32,7 @@ public class UsuarioServicioImpl implements IUsuarioServicio{
 		Usuario existencia = repositorio.findById(id)
 	            .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
 	        
-	        existencia.setUsuario(usuario.getUsuario());
+	        existencia.setUsername(usuario.getUsername());
 	        existencia.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
 	        existencia.setRol(usuario.getRol());
 	        

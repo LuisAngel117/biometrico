@@ -37,8 +37,8 @@ public class Usuario {
 	
 	@NotBlank(message = "El nombre de usuario no puede estar vacío")
 	@Size(min = 1, max=50, message="Debe contener máximo 50 carácteres")
-	@Column(name="usuario", nullable=false, unique=true)
-	private String usuario;
+	@Column(name="username", nullable=false, unique=true)
+	private String username;
 	
 
 	@NotBlank(message = "El número de cédula no puede estar vacío")
@@ -52,7 +52,7 @@ public class Usuario {
 	    @JoinColumn(name = "empleado_id", unique = true, nullable = false)
 	    private Empleado empleado;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name="usuarios_roles", 
 	joinColumns=@JoinColumn(name="usuario_id"),
 	inverseJoinColumns = @JoinColumn(name="rol_id"))

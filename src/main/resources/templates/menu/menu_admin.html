@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <title>Administrador</title>
+    <link th:href="@{/css/styles_menuAdmin.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>HOLA MUNDO ADMIN</h1>
+    <nav>
+        <h2 style="color: white;">Administrador</h2>
+        <a th:href="@{/admin/home/empleado/listar_empleado}">Empleados</a>
+        <!--  <a th:href="@{/estadisticas}">Estadísticas</a>-->
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+    <main>
+        <header>
+            <h1>Bienvenido al Panel de Administración</h1>
+        </header>
+        <!-- Contenido principal -->
+        <div>
+            <p>Aquí puedes administrar empleados y ver estadísticas.</p>
+        </div>
+        <a th:href="@{/admin/home/registro_asistencia/capturar-ip}">link ip</a>
+        
+        <div class="message-container"> <h2 th:text="${mensaje}">Resultado</h2> 
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Derechos reservados</p>
+    </footer>
 </body>
 </html>

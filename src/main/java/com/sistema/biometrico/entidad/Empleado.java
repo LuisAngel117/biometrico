@@ -5,7 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,38 +41,50 @@ public class Empleado {
 	@Column(name="empleado_id")
 	private Integer id;
 	
+	/*
 	@NotBlank(message = "El número de cédula no puede estar vacío")
 	@Size(min = 1, max=10, message="Debe contener 10 números")
 	@Pattern(regexp = "^[0-9]*$", message = "Solo se permiten números")
+	*/
 	@Column(name="cedula", nullable = false, length = 10)
 	private String cedula;
 	
+	/*
 	@NotBlank(message = "El número de cédula no puede estar vacío")
 	@Size(min = 1, max=10, message="Debe contener máximo 100 caracteres")
 	@Pattern(regexp = "^[a-zA-Z]+$", message = "Solo se permiten letras")
+	*/
 	@Column(name="nombre", nullable = false, length = 50)
 	private String nombre;
 	
+	/*
 	@NotBlank(message = "El número de cédula no puede estar vacío")
 	@Size(min = 1, max=10, message="Debe contener 50 números")
 	@Pattern(regexp = "^[a-zA-Z]+$", message = "Solo se permiten letras")
+	*/
 	@Column(name="apellido", nullable = false, length = 50)
 	private String apellido;
 	
+	/*
 	@NotBlank(message = "No puede estar vacío este campo")
 	@Size(min = 1, max=10, message="Debe contener máximo 100 caracteres")
+	*/
 	@Column(name="direccion", nullable = false, length = 100)
 	private String direccion;
 	
+	/*
 	@NotBlank(message = "No puede estar vacío este campo")
 	@Size(min = 1, max=10, message="Debe contener máximo 13 números")
 	@Pattern(regexp = "^[0-9]+$", message = "Solo se permiten números")
+	*/
 	@Column(name="telefono", nullable = false, length = 13)
 	private String telefono;
 	
+	/*
 	@NotBlank(message = "No puede estar vacío este campo")
 	@Size(min = 1, max=50, message="Debe contener máximo 50 caracteres")
 	@Email(message = "El correo debe ser válido")
+	*/
 	@Column(name="correo", nullable = false, length = 50)
 	private String correo;
 	
@@ -78,4 +93,7 @@ public class Empleado {
 	
 	 @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	    private Usuario usuario;	
+	 
+	@OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<RegistroAsistencia> pedido = new ArrayList<>();
 }

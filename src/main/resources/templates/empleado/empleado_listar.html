@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Empleados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .table-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            width: 80%;
+        }
+        .table-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h2>Lista de Empleados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${listarEmpleado}">
+                    <td th:text="${empleado.id}">1</td>
+                    <td th:text="${empleado.cedula}">0102030405</td>
+                    <td th:text="${empleado.nombre}">Juan</td>
+                    <td th:text="${empleado.apellido}">Pérez</td>
+                    <td th:text="${empleado.direccion}">Calle Falsa 123</td>
+                    <td th:text="${empleado.telefono}">0987654321</td>
+                    <td th:text="${empleado.correo}">juan.perez@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

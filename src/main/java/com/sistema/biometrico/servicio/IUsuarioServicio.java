@@ -11,4 +11,5 @@ public interface IUsuarioServicio {
 	Usuario actualizar(Integer id, Usuario usuario);
 	boolean eliminar(Integer id);
 	List<Usuario> listarUsuarioActivos();
+	boolean isDatabaseEmpty();
 }

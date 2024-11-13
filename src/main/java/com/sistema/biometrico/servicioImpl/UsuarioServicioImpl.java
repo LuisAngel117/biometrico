@@ -54,6 +54,11 @@ public class UsuarioServicioImpl implements IUsuarioServicio{
 		return repositorio.findAll();
 	}
 
+	@Override
+	public boolean isDatabaseEmpty() {
+		return repositorio.count()==0;
+	}
+
 	
 
 }

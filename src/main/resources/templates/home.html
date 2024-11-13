@@ -1,17 +1,43 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Bienvenidos</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link th:href="@{/css/styles.css}" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <a th:href="@{/login}">Ir a la Página de Login</a>
-    </body>
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenidos</title>
+    <link th:href="@{/css/styles_home.css}" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header class="navbar">
+        <div class="logo">Sistema Biometrico</div>
+        <a th:href="@{/login}" class="btn-signup">Sign Up</a>
+        
+    </header>
+
+    <!-- Sección principal -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>SEGURIDAD <br> TECNOLOGICA</h1>
+            <p>Invertir en un sistema informático biométrico no solo optimiza la seguridad, sino que también aumenta la eficiencia operativa y garantiza el cumplimiento normativo al proteger datos sensibles de manera avanzada y confiable.</p>
+            
+        </div>
+        <div class="hero-image">
+            <img th:src="@{/images/home_security.jpg}" alt="Biometrico">
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p class="footer-names">
+            <span>Julio Vizñay</span>
+            <span>Alexander Quinga</span>
+            <span>Luis Sigsig</span>
+            <span>Eduwin Guaman</span>
+        </p>
+        <p>
+            CREADORES
+        </p>
+    </footer>
+</body>
 </html>

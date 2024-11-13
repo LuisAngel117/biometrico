@@ -30,12 +30,13 @@ public class ConfiguracionSeguridad {
 	        http
 	        	.csrf(csfg->csfg.disable())
 	            .authorizeHttpRequests(requests -> requests
-	                .requestMatchers("/","/home","/css/**", "/js/**", "/images/**").permitAll()
+	                .requestMatchers("/","/home/**","/css/**", "/js/**", "/images/**").permitAll()
 	                .requestMatchers("/admin/**").hasRole("Admin")
 	                .requestMatchers("/user/**").hasRole("Usuario")
 	                .anyRequest().authenticated()
 	            )
 	            .formLogin(
+	            		
 	            	form ->{form
 	                .loginPage("/login")
 	                .successHandler(new AuthenticationSuccessHandler())

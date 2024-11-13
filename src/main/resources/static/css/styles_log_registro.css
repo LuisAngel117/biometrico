@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+
+/* Fondo */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+	background: linear-gradient(135deg, #4B088A, #56456E);
+	padding: 20px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+	width: 100%;
+	max-width: 500px;
+	padding: 40px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+	margin-bottom: 30px;
+}
+
+.form-container h4 {
+	color: white;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-container label {
+	color: #d1d1d1;
+}
+
+.form-container .form-control, .form-container .form-select {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+	outline: none;
+	margin-bottom: 15px;
+}
+
+/* Botones */
+.btn-primary, .btn-secondary {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #6A5ACD, #483D8B);
+}
+
+.btn-primary:hover {
+	background: linear-gradient(135deg, #483D8B, #6A5ACD);
+}
+
+.btn-secondary {
+	background: linear-gradient(135deg, #FF6347, #FF4500);
+	margin-top: 10px;
+}
+
+.btn-secondary:hover {
+	background: linear-gradient(135deg, #FF4500, #FF6347);
+}

@@ -18,26 +18,26 @@ import com.sistema.biometrico.servicioImpl.EmpleadoServicioImpl;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/empleados")
+@RequestMapping("/admin/home/empleado")
 public class EmpleadoControlador {
 	@Autowired
 	private EmpleadoServicioImpl servicio;
 	
-	@GetMapping
+	@GetMapping("/listar_empleado")
 	public String listarEmpleado(Model model) {
 		List<Empleado> empleado = servicio.listarEmpleadosActivos();
 		model.addAttribute("listarEmpleado", empleado);
-		return "FrmListarEmpleado";
+		return "empleado/empleado_listar";
 	}
 	
-	@GetMapping("/nuevo")
+	@GetMapping("/registro_empleado")
 	public String mostrarFormularioDeNuevo(Model model) {
 		model.addAttribute("empleado", new Empleado());
-		model.addAttribute("accion", "/empleados/nuevo");
-		return "FrmEmpleado";
+		//model.addAttribute("accion", "/empleados/nuevo");
+		return "empleado/empleado_registro";
 	}
 	
-	@PostMapping("/nuevo")
+	@PostMapping("/guardar")
 	public String guardarNuevoEmpleado(@Valid @ModelAttribute Empleado empleado, BindingResult result) {
 		if (result.hasErrors()) {
 			return "FrmEmpleado";

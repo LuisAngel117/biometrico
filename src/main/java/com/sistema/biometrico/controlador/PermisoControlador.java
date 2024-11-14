@@ -13,56 +13,61 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.biometrico.entidad.Permiso;
-import com.sistema.biometrico.entidad.Permiso;
-import com.sistema.biometrico.servicioImpl.PermisoServicioImpl;
-import com.sistema.biometrico.servicioImpl.PermisoServicioImpl;
+import com.sistema.biometrico.servicio.IPermisoServicio;
+import com.sistema.biometrico.servicio.IEmpleadoServicio;
 
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/permisos")
+@RequestMapping("/admin/home/permiso")
 public class PermisoControlador {
+
     @Autowired
-	private PermisoServicioImpl servicio;
-	
-	@GetMapping
-	public String listarPermiso(Model model) {
-		List<Permiso> permiso = servicio.listarPermisosActivos();
-		model.addAttribute("listarPermiso", permiso);
-		return "FrmListarPermiso";
-	}
-	
-	@GetMapping("/nuevo")
-	public String mostrarFormularioDeNuevo(Model model) {
-		model.addAttribute("permiso", new Permiso());
-		model.addAttribute("accion", "/permisos/nuevo");
-		return "FrmPermiso";
-	}
-	
-	@PostMapping("/nuevo")
-	public String guardarNuevoPermiso(@Valid @ModelAttribute Permiso permiso, BindingResult result) {
-		if (result.hasErrors()) {
-			return "FrmPermiso";
-		}
-		servicio.crear(permiso);
-		return"redirect:/permisos";
-	}
-	
-	@GetMapping("/editar/{id}")
-	public String mostrarFormularioEditarPermiso(@PathVariable Integer id,@ModelAttribute Permiso permiso, Model model) {
-		model.addAttribute("permiso", permiso);
-		model.addAttribute("accion", "/permisos/editar/"+id);
-		return "editar_permiso.html";
-	}
-	@PostMapping("editar/{id}")
-	public String actualizarPermiso(@PathVariable Integer id, @ModelAttribute Permiso permiso) {
-		servicio.actualizar(id, permiso);
-		return "redirect:/permisos";
-	}
-	
-	@GetMapping ("/eliminar/{id}")
-	public String eliminarPermiso(@PathVariable Integer id) {
-		servicio.eliminar(id);
-		return "redirect:/permisos";
-	}
+    private IPermisoServicio permisoServicio;
+    
+    @Autowired
+    private IEmpleadoServicio empleadoServicio;
+
+    @GetMapping("/listar_permiso")
+    public String listarPermiso(Model model) {
+        List<Permiso> permisos = permisoServicio.listarPermisosActivos();
+        model.addAttribute("listarPermiso", permisos);
+        return "permiso/permiso_listar";
+    }
+
+    @GetMapping({"/registro_permiso", "/editar/{id}"})
+    public String mostrarFormulario(@PathVariable(required = false) Integer id, Model model) {
+        Permiso permiso;
+        if (id == null) {
+            permiso = new Permiso();
+        } else {
+            permiso = permisoServicio.obtenerPorId(id);
+            if (permiso == null) {
+                return "redirect:/admin/home/permiso/listar_permiso";
+            }
+        }
+        model.addAttribute("permiso", permiso);
+        model.addAttribute("empleados", empleadoServicio.listarEmpleadosActivos());
+        return "permiso/permiso_registro";
+    }
+
+    @PostMapping({"/guardar", "/editar/{id}"})
+    public String guardarOActualizarPermiso(@PathVariable(required = false) Integer id, @Valid @ModelAttribute Permiso permiso, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("empleados", empleadoServicio.listarEmpleadosActivos());
+            return "permiso/permiso_registro";
+        }
+        if (id == null) {
+            permisoServicio.crear(permiso);
+        } else {
+            permisoServicio.actualizar(id, permiso);
+        }
+        return "redirect:/admin/home/permiso/listar_permiso";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarPermiso(@PathVariable Integer id) {
+        permisoServicio.eliminar(id);
+        return "redirect:/admin/home/permiso/listar_permiso";
+    }
 }

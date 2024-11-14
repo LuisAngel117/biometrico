@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sistema.biometrico.entidad.Empleado;
+import com.sistema.biometrico.entidad.Permiso;
 import com.sistema.biometrico.entidad.RegistroAsistencia;
 import com.sistema.biometrico.repositorio.IEmpleadoRepositorio;
 import com.sistema.biometrico.repositorio.IRegistroAsistenciaRepositorio;
@@ -66,6 +67,7 @@ class BiometricoApplicationTests {
 		//emp.setEstado(false);
 		//servicio.eliminar(1, emp);
 		
+
 	
 		//Empleado emp=new Empleado();
         //emp.setCedula("1234567890");

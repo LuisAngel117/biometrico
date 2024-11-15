@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.biometrico.entidad.Permiso;
 import com.sistema.biometrico.servicio.IPermisoServicio;
+import com.sistema.biometrico.servicio.ICatalogoServicio;
 import com.sistema.biometrico.servicio.IEmpleadoServicio;
 
 import jakarta.validation.Valid;
@@ -27,6 +28,9 @@ public class PermisoControlador {
     
     @Autowired
     private IEmpleadoServicio empleadoServicio;
+
+    @Autowired
+    private ICatalogoServicio catalogoServicio;
 
     @GetMapping("/listar_permiso")
     public String listarPermiso(Model model) {
@@ -48,6 +52,7 @@ public class PermisoControlador {
         }
         model.addAttribute("permiso", permiso);
         model.addAttribute("empleados", empleadoServicio.listarEmpleadosActivos());
+        model.addAttribute("catalogos", catalogoServicio.listarCatalogosActivos());
         return "permiso/permiso_registro";
     }
 
@@ -55,6 +60,7 @@ public class PermisoControlador {
     public String guardarOActualizarPermiso(@PathVariable(required = false) Integer id, @Valid @ModelAttribute Permiso permiso, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("empleados", empleadoServicio.listarEmpleadosActivos());
+            model.addAttribute("catalogos", catalogoServicio.listarCatalogosActivos());
             return "permiso/permiso_registro";
         }
         if (id == null) {

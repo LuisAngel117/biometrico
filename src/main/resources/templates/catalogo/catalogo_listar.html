@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Permisos</title>
+    <title>Lista de Catalogo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,39 +61,30 @@
 </head>
 <body>
     <div class="table-container">
-        <h2>Lista de Permisos</h2>
+        <h2>Lista de Catalogos</h2>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Nombre</th>
                     <th>Estado</th>
-                    <th>Empleado</th>
-                    <th>Catalogo</th>
-                    <th>Observaciones</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="permiso : ${listarPermiso}">
-                    <td th:text="${permiso.id}">1</td>
-                    <td th:text="${permiso.estado ? 'Activo' : 'Inactivo'}">Estado</td>
-                    <td th:text="${permiso.empleado.nombre}">Nombre Empleado</td>
-                    <td th:text="${permiso.catalogo.nombre}">Nombre Catalogo</td>
-                    <td th:text="${permiso.descripcion}">Descripcion</td>
-                    <td th:text="${permiso.fechaInicio}">Inicio</td>
-                    <td th:text="${permiso.fechaFin}">Fin</td>
-
+                <tr th:each="catalogo : ${listarCatalogo}">
+                    <td th:text="${catalogo.id}">1</td>
+                    <td th:text="${catalogo.nombre}">Nombre</td>
+                    <td th:text="${catalogo.estado ? 'Activo' : 'Inactivo'}">Estado</td>
                     <td>
-                        <a th:href="@{/admin/home/permiso/editar/{id}(id=${permiso.id})}">Editar</a> |
-                        <a th:href="@{/admin/home/permiso/eliminar/{id}(id=${permiso.id})}">Eliminar</a>
+                        <a th:href="@{/admin/home/catalogo/editar/{id}(id=${catalogo.id})}">Editar</a> |
+                        <a th:href="@{/admin/home/catalogo/eliminar/{id}(id=${catalogo.id})}">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="button-container">
-            <a th:href="@{/admin/home/permiso/registro_permiso}">Registrar Nuevo Permiso</a>
+            <a th:href="@{/admin/home/catalogo/registro_catalogo}">Registrar Nuevo Catalogo</a>
         </div>
     </div>
 </body>

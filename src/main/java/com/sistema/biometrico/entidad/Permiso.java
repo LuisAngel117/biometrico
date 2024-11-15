@@ -1,5 +1,7 @@
 package com.sistema.biometrico.entidad;
 
+import java.sql.Date;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +26,25 @@ public class Permiso {
     @NotNull(message = "El empleado es obligatorio")
     private Empleado empleado;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "catalogo_id")
+    @NotNull(message = "El tipo de permiso es obligatorio")
+    private Catalo catalogo;
+
     @NotNull(message = "El estado es obligatorio")
     private Boolean estado;
+
+    private String descripcion; 
+
+    @Column(name = "fecha_inicio") 
+    @Temporal(TemporalType.DATE) 
+    @NotNull(message = "La fecha_inicio es obligatoria")
+    private Date fechaInicio; 
+
+    @Column(name = "fecha_fin") 
+    @Temporal(TemporalType.DATE) 
+    @NotNull(message = "La fecha_fin es obligatoria")
+    private Date fechaFin;
 }
 
 

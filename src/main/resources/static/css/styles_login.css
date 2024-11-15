@@ -118,3 +118,16 @@ h2 {
 .register-btn:hover {
     background: linear-gradient(135deg, #FF4500, #FF6347);
 }
+.button {
+    background-color: #4CAF50; /* Color de fondo */
+    border: none; /* Sin bordes */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; /* Borde redondeado */
+}

@@ -24,9 +24,9 @@
                 </div>
                 <button type="submit" class="login-btn">Iniciar Sesión</button>
             </form>
-            <div th:if="${isDatabaseEmpty}"> 
-            	<a th:href="@{/home/registro}">Registrate</a> 
-            </div> 
+            <div th:if="${isDatabaseEmpty}">
+                <a th:href="@{/home/registro}" class="button">Regístrate</a>
+            </div>            
         </div>
     </div>
 </body>
